@@ -49,3 +49,9 @@ if __name__ == "__main__":
     j.perform_move(0, 0)
     print("The board looks like(after changing it) = ", j.get_board())
 
+    print("50%' chance to turn on the light or off")
+    z = homework.create_puzzle(3, 3)
+    print("The board looks like(create_puzzle) = ", z.get_board())
+    z.scramble()
+    print("answer for scramble = ", z.get_board())
+

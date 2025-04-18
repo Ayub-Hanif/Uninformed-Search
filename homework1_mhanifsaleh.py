@@ -10,6 +10,7 @@ student_name = "Mohammad Ayub Hanif Saleh"
 
 # Include your imports here, if any are used.
 import math
+import random
 
 
 
@@ -133,10 +134,24 @@ class LightsOutPuzzle(object):
             self.board[row][col+1] = not self.board[row][col+1]
 
     def scramble(self):
-        pass
+        eq_probab = random.random() < 0.5
+
+        #I think we have to go through each row and column and flip the lights.
+        for row in range(self.rows):
+            for col in range(self.cols):
+                if eq_probab: #using the 50% chance to turn on the light or off.
+                    self.perform_move(row, col) #change the light.
+
 
     def is_solved(self):
-        pass
+        #if the every light is off then we just return true.
+        #otherwise we return false
+        #The easiest way I think is that checking the light is off or not.
+        for row in range(self.rows):
+            for col in range(self.cols):
+                if self.board[row][col]: #is it on?
+                    return False
+        return True #didn't find any light.
 
     def copy(self):
         pass
