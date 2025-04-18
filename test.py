@@ -55,3 +55,15 @@ if __name__ == "__main__":
     z.scramble()
     print("answer for scramble = ", z.get_board())
 
+    print("test of the is_solved function #1")
+    w = homework.LightsOutPuzzle([[True,False],[False,True]])
+    print("The board looks like = ", w.get_board())
+    answer = w.is_solved()
+    print("The answer for is_solved = ", answer)
+
+    print("test of the is_solved function #2")
+    w = homework.LightsOutPuzzle([[False,False],[False,False]])
+    print("The board looks like = ", w.get_board())
+    answer = w.is_solved()
+    print("The answer for is_solved = ", answer)
+
