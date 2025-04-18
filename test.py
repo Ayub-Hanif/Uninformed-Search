@@ -29,3 +29,11 @@ if __name__ == "__main__":
     print("The final function sol is = ", list(homework.n_queens_solutions(4)))
     print("The final function sol is = ", len(list(homework.n_queens_solutions(8))))
 
+    b = [[True, False],[False, True]]
+    print("p = LightsOutpuzzle(b) is called here")
+    p = homework.LightsOutPuzzle(b)
+    print("The board looks like = ", p.get_board())
+    p = [[True, True],[True, True]]
+    print("p = LightsOutpuzzle(p) is called here ", p)
+    print("The board b still looks like ", b)
+

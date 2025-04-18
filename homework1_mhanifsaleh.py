@@ -98,7 +98,16 @@ class LightsOutPuzzle(object):
             self.cols = 0
 
     def get_board(self):
-        pass
+        #we want to get the board when ask for it so lets make a copy of it.
+        #and return it so if in any way I by mistakenly change something I won't lose stuff.
+        #I will just make a copy of it and return the board.
+        board_temp = []
+        for row in self.board:
+            temp_row = []
+            for col in row:
+                temp_row.append(col)
+            board_temp.append(temp_row)
+        return board_temp
 
     def perform_move(self, row, col):
         pass
