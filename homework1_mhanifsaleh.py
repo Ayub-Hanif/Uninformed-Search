@@ -27,8 +27,11 @@ def num_placements_all(n):
     #using the math lib we can use the math.comb which I found using the W3Schools when searching for the combination formula in python.
     return math.comb(num_sq, n)
 
+# Now using the same thing but with the condition that each row contains only one queen.
+# Then we can say that for each row have a queen so if we have n different squares.
+# Then we can also say that the number of placements is n^n or in python pow(n,n) using Greeksforgeeks.
 def num_placements_one_per_row(n):
-    pass
+    return pow(n, n)
 
 def n_queens_valid(board):
     pass
