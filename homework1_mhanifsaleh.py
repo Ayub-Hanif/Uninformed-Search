@@ -78,8 +78,24 @@ def n_queens_solutions(n):
 
 class LightsOutPuzzle(object):
 
+    # For the constructor I think we just need to copy the board 
+    # and keep it so outside functions can't change it and it will initialize the board.
     def __init__(self, board):
-        pass
+        #making sure we don't change the original board once we are making changes on the other functions.
+        temp_board = []
+        for row in board:
+            temp_row = [] #making new row everytime.
+            for col in row: #we take the T or F and copy it to the new row.
+                temp_row.append(col)
+            temp_board.append(temp_row) #once we finished row we just add it. 
+        self.board = temp_board #now we will give it back to the object and store it.
+
+        if len(board) != 0:
+            self.rows = len(board)
+            self.cols = len(board[0]) #we take the num of cols
+        else:
+            self.rows = 0
+            self.cols = 0
 
     def get_board(self):
         pass
