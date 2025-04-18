@@ -37,3 +37,15 @@ if __name__ == "__main__":
     print("p = LightsOutpuzzle(p) is called here ", p)
     print("The board b still looks like ", b)
 
+    print("create and perform move #1")
+    p = homework.create_puzzle(3, 3)
+    print("The board looks like(create_puzzle) = ", p.get_board())
+    p.perform_move(1, 1)
+    print("The board looks like(after changing it) = ", p.get_board())
+
+    print("create and perform move #2")
+    j = homework.create_puzzle(3, 3)
+    print("The board looks like(create_puzzle) = ", j.get_board())
+    j.perform_move(0, 0)
+    print("The board looks like(after changing it) = ", j.get_board())
+

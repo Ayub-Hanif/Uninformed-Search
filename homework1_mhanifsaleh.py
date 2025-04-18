@@ -113,23 +113,23 @@ class LightsOutPuzzle(object):
         # WE can toggle light on or off by using the not operator.
 
         #the cell we want to change.
-        if ((0 <= col) < self.cols) and ((0 <= row) < self.rows):
+        if (0 <= col < self.cols) and (0 <= row < self.rows):
             self.board[row][col] = not self.board[row][col]
         
         #exact nighbour above us.
-        if ((0 <= col) < self.cols) and ((0 <= row) < self.rows):
+        if (0<=(row-1) < self.rows):
             self.board[row-1][col] = not self.board[row-1][col]
         
         #exact nighbour below us.
-        if ((0 <= col) < self.cols) and ((0 <= row) < self.rows):
+        if (0<=(row+1) < self.rows):
             self.board[row+1][col] = not self.board[row+1][col]
         
         #exact nighbour to the left of us.
-        if ((0 <= col) < self.cols) and ((0 <= row) < self.rows):
+        if (0<=(col-1) < self.cols):
             self.board[row][col-1] = not self.board[row][col-1]
         
         #exact nighbour to the right of us.
-        if ((0 <= col) < self.cols) and ((0 <= row) < self.rows):
+        if (0<=(col+1) < self.cols):
             self.board[row][col+1] = not self.board[row][col+1]
 
     def scramble(self):
