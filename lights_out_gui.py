@@ -6,7 +6,7 @@ import tkinter
     # and I will change the import statement below to be "import homework1_bmyao as homework"
     # And my solution file will be named "homework1_bmyao.py", as required in the homework instructions.
 # Replace UCD_email_id with your UCD email id before the @ucdavis.edu.
-import homework1_UCD_email_id as homework
+import homework1_mhanifsaleh as homework
 
 class Light(tkinter.Canvas):
 

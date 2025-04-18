@@ -2,13 +2,14 @@
 # ECS170: Uninformed Search
 ############################################################
 
-student_name = "Type your full name here."
+student_name = "Mohammad Ayub Hanif Saleh"
 
 ############################################################
 # Imports
 ############################################################
 
 # Include your imports here, if any are used.
+import math
 
 
 
@@ -16,8 +17,15 @@ student_name = "Type your full name here."
 # Section 1: N-Queens
 ############################################################
 
+# I think this is a n^2 board with n queens on it so if we think that there is no difference between the queens
+# And order does not matter then we can call this problem a combination problem.
+# The equation for Combination then we know is comb(n,k) = n!/(k!(n-k)!)
+# And we know that k is the number of queens and n is the number of squares in the board.
 def num_placements_all(n):
-    pass
+    # we can set the number of squares to be n*n.
+    num_sq = n*n
+    #using the math lib we can use the math.comb which I found using the W3Schools when searching for the combination formula in python.
+    return math.comb(num_sq, n)
 
 def num_placements_one_per_row(n):
     pass
