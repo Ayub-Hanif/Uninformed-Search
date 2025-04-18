@@ -61,14 +61,14 @@ def n_queens_helper(board, n):
         yield board
         return
 
-    #I think we need to try and check until we find the correct placement and to do that we need to try each column.
+    #I think we need to try and check until we find the correct placement and to do that we need to try each row.
     for try_col in range(n):
-        if try_col not in board: #I check the column if it is not in the board then we can place it.
-            new_board = board + [try_col] #then I add the queen to this row.
-            if n_queens_valid(new_board): #I check if the new board is valid or not.
+        if try_col not in board: #I check the column if there is no queen in the column we can place the queen.
+            new_board = board + [try_col] #then I add the queen to the new board.
+            if n_queens_valid(new_board): #I check if the board is still valid or not.
                 yield from n_queens_helper(new_board, n) #then I will yield the new board and call the function again until I hit the base case.
 
-#I think the easiest way is the hint way of first need get all the possible valid placements of the queens by yielding the board.
+#I think the easiest way is the hint way of need get all the possible valid placements of the queens by yielding the board.
 def n_queens_solutions(n):
     yield from n_queens_helper([], n)
 
