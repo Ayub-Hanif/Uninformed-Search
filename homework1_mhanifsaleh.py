@@ -33,8 +33,25 @@ def num_placements_all(n):
 def num_placements_one_per_row(n):
     return pow(n, n)
 
+#lets say that we have a board with 2 numbers given thus then we need to make sure that the queens are not in the same column.
+#but I also see that we need to return true or false depending on the board and queen.
+#I am assuiming that the board values means as such = "row, col" so if I have [0,2] then thats row 0 and column 0, row 1 and column 2 which will be true.
+#so we can't have same column or diagonal or opposite diagonal.
 def n_queens_valid(board):
-    pass
+
+    for i in range(len(board)):
+        for z in range(i+1, len(board)):
+            #we can check the [0,2] if its same column by doing 0 == 2?? we go on otherwise if its [1,1] 1==1 then it is false.
+            if board[i] == board[z]:
+                return False
+            
+            #for [0,2] else if same diagonal then we get the abs(0-1) == abs(0-2) we go on because it is valid.
+            #abs(i-z) will do the vertical test by keeping the size only and we don't care about the sign.
+            #and abs(board[i]- board[z]) will do the horizontal test and the same thing for abs. 
+            if abs(i-z) == abs(board[i]- board[z]):
+                return False
+    #otherwise I think we are good and nothing is in same column or diagonal.
+    return True
 
 def n_queens_solutions(n):
     pass

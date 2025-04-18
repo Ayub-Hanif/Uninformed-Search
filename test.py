@@ -12,3 +12,18 @@ if __name__ == "__main__":
     print("l1 = ", l1)
     print("l2 = ", l2)
     print("Testing is done!")
+    
+    board = [[0,0], [0, 1],
+             [1, 0], [0,2],
+             [1, 1], [0,3],
+             [1, 2], [1,3],
+             [0,3,1]]
+    print("The tests on the board will be = ", board)
+    for i in board:
+        is_valid = homework.n_queens_valid(i)
+        if is_valid:
+            print("the Board looks like= ", i, "it is VALID")
+        else:
+            print("the Board looks like=", i, "it is NOT valid")
+
+
