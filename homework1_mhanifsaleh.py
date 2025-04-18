@@ -110,7 +110,27 @@ class LightsOutPuzzle(object):
         return board_temp
 
     def perform_move(self, row, col):
-        pass
+        # WE can toggle light on or off by using the not operator.
+
+        #the cell we want to change.
+        if ((0 <= col) < self.cols) and ((0 <= row) < self.rows):
+            self.board[row][col] = not self.board[row][col]
+        
+        #exact nighbour above us.
+        if ((0 <= col) < self.cols) and ((0 <= row) < self.rows):
+            self.board[row-1][col] = not self.board[row-1][col]
+        
+        #exact nighbour below us.
+        if ((0 <= col) < self.cols) and ((0 <= row) < self.rows):
+            self.board[row+1][col] = not self.board[row+1][col]
+        
+        #exact nighbour to the left of us.
+        if ((0 <= col) < self.cols) and ((0 <= row) < self.rows):
+            self.board[row][col-1] = not self.board[row][col-1]
+        
+        #exact nighbour to the right of us.
+        if ((0 <= col) < self.cols) and ((0 <= row) < self.rows):
+            self.board[row][col+1] = not self.board[row][col+1]
 
     def scramble(self):
         pass
@@ -128,7 +148,15 @@ class LightsOutPuzzle(object):
         pass
 
 def create_puzzle(rows, cols):
-    pass
+    #Making sure all the lights are off.
+    board = []
+    for row in range(rows):
+        temp_row = []
+        for col in range(cols):
+            temp_row.append(False) #I put the light False so it is off.
+        board.append(temp_row) #Added the finished row back.
+
+    return LightsOutPuzzle(board)
 
 ############################################################
 # Section 3: Linear Disk Movement
