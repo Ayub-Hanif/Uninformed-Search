@@ -53,8 +53,24 @@ def n_queens_valid(board):
     #otherwise I think we are good and nothing is in same column or diagonal.
     return True
 
+def n_queens_helper(board, n):
+
+    #we need the solution from the function and also it should stop exploring after.
+    #bascially this is our base case bc otherwise it kept going on.
+    if len(board) == n:
+        yield board
+        return
+
+    #I think we need to try and check until we find the correct placement and to do that we need to try each column.
+    for try_col in range(n):
+        if try_col not in board: #I check the column if it is not in the board then we can place it.
+            new_board = board + [try_col] #then I add the queen to this row.
+            if n_queens_valid(new_board): #I check if the new board is valid or not.
+                yield from n_queens_helper(new_board, n) #then I will yield the new board and call the function again until I hit the base case.
+
+#I think the easiest way is the hint way of first need get all the possible valid placements of the queens by yielding the board.
 def n_queens_solutions(n):
-    pass
+    yield from n_queens_helper([], n)
 
 ############################################################
 # Section 2: Lights Out

@@ -26,4 +26,6 @@ if __name__ == "__main__":
         else:
             print("the Board looks like=", i, "it is NOT valid")
 
+    print("The final function sol is = ", list(homework.n_queens_solutions(4)))
+    print("The final function sol is = ", len(list(homework.n_queens_solutions(8))))
 
