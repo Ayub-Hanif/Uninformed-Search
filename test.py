@@ -67,3 +67,15 @@ if __name__ == "__main__":
     answer = w.is_solved()
     print("The answer for is_solved = ", answer)
 
+
+    print("test of the copy function #1")
+    i = homework.create_puzzle(3, 3)
+    i2 = i.copy()
+    print("are i and i2 the same: ", i.get_board() == i2.get_board())
+
+    print("test of the copy function #2")
+    k = homework.create_puzzle(3, 3)
+    k2 = i.copy()
+    k.perform_move(1, 1)
+    print("are k and k2 the same: ", k.get_board() == k2.get_board())
+

@@ -154,7 +154,9 @@ class LightsOutPuzzle(object):
         return True #didn't find any light.
 
     def copy(self):
-        pass
+        board_temp = self.get_board() #I will copy it and then return it as a new object.
+        return LightsOutPuzzle(board_temp)
+
 
     def successors(self):
         pass
