@@ -79,3 +79,8 @@ if __name__ == "__main__":
     k.perform_move(1, 1)
     print("are k and k2 the same: ", k.get_board() == k2.get_board())
 
+    print("successors function test#1")
+    o = homework.create_puzzle(2, 2)
+    for move, new_p in o.successors():
+        print("move = ", move, "new_board = ", new_p.get_board())
+

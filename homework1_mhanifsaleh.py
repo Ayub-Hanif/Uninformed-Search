@@ -157,9 +157,16 @@ class LightsOutPuzzle(object):
         board_temp = self.get_board() #I will copy it and then return it as a new object.
         return LightsOutPuzzle(board_temp)
 
-
+    # we move it by row and col and then we make a new object and return it.
+    #I think a good way and easy would be to just make a copy for every row and col that we move.
+    #And then we can just return the new object.
     def successors(self):
-        pass
+        for row in range(self.rows):
+            for col in range(self.cols):
+                new_board = self.copy()
+                new_board.perform_move(row, col)
+                yield ((row, col), new_board) # so if we have move (1,1) then we will return the new board with the move.
+        
 
     def find_solution(self):
         pass
