@@ -91,3 +91,9 @@ if __name__ == "__main__":
             p.perform_move(row, col)
     print("The board looks like = ", p.get_board())
     print("The answer for solver = ", p.find_solution())
+
+    print("solver function test#2")
+    h = [[False,False,False],[False,False,False]]
+    k = homework.LightsOutPuzzle(h)
+    print("The board looks like = ", k.get_board())
+    print("The answer for solver = ", k.find_solution() is None)
