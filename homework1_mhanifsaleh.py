@@ -24,9 +24,13 @@ import collections
 # And we know that k is the number of queens and n is the number of squares in the board.
 def num_placements_all(n):
     # we can set the number of squares to be n*n.
+    # num_sq! / (n! (num_sq‑n)!)
     num_sq = n*n
+    answer = math.factorial(num_sq) / (math.factorial(n) * math.factorial(num_sq - n))
     #using the math lib we can use the math.comb which I found using the W3Schools when searching for the combination formula in python.
-    return math.comb(num_sq, n)
+    #but when I was doing the lights out problem I was getting 0.5 less then I looked at the discussion and I found that they want me to use factorial.
+    #so I just made equation using that and used it.
+    return int(answer)
 
 # Now using the same thing but with the condition that each row contains only one queen.
 # Then we can say that for each row have a queen so if we have n different squares.
@@ -170,7 +174,9 @@ class LightsOutPuzzle(object):
 
     def find_solution(self):
 
-        if (self.is_solved() == False):
+        if(self.is_solved()):
+            return []
+        else:
             queue = collections.deque()
             queue.append((self.copy(), []))
             begin = tuple(tuple(row) for row in self.get_board()) #I think we need to keep track of the visited.
@@ -191,9 +197,8 @@ class LightsOutPuzzle(object):
                     
                     queue.append((new_puzzle, new_moves))
 
-            return None #try all solutions if not found return none
-        else:
-            return []  #we don't do anything
+            return None
+
 
 def create_puzzle(rows, cols):
     #Making sure all the lights are off.
