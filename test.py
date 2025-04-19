@@ -84,3 +84,10 @@ if __name__ == "__main__":
     for move, new_p in o.successors():
         print("move = ", move, "new_board = ", new_p.get_board())
 
+    print("solver function test#1")
+    p = homework.create_puzzle(2, 3)
+    for row in range(2):
+        for col in range(3):
+            p.perform_move(row, col)
+    print("The board looks like = ", p.get_board())
+    print("The answer for solver = ", p.find_solution())

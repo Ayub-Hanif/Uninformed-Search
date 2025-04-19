@@ -11,7 +11,7 @@ student_name = "Mohammad Ayub Hanif Saleh"
 # Include your imports here, if any are used.
 import math
 import random
-
+import collections
 
 
 ############################################################
@@ -169,7 +169,31 @@ class LightsOutPuzzle(object):
         
 
     def find_solution(self):
-        pass
+
+        if (self.is_solved() == False):
+            queue = collections.deque()
+            queue.append((self.copy(), []))
+            begin = tuple(tuple(row) for row in self.get_board()) #I think we need to keep track of the visited.
+            visited = {begin}
+
+            while queue:
+                current, moves = queue.popleft() #pop the left side of the queue.
+
+                for move, new_puzzle in current.successors(): #get the successors of the current board.
+                    new_visited = tuple(tuple(row) for row in new_puzzle.get_board()) #track of the visited.
+                    if new_visited in visited: #we check if we have already visited this board.
+                        continue
+                    visited.add(new_visited)
+                    new_moves = moves + [move] #we make a new move and add it to the list.
+
+                    if new_puzzle.is_solved():
+                        return new_visited #we found the solution.
+                    
+                    queue.append((new_puzzle, new_moves))
+
+            return None #try all solutions if not found return none
+        else:
+            return []  #we don't do anything
 
 def create_puzzle(rows, cols):
     #Making sure all the lights are off.
