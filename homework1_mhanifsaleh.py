@@ -187,7 +187,7 @@ class LightsOutPuzzle(object):
                     new_moves = moves + [move] #we make a new move and add it to the list.
 
                     if new_puzzle.is_solved():
-                        return new_visited #we found the solution.
+                        return new_moves #we found the solution.
                     
                     queue.append((new_puzzle, new_moves))
 
