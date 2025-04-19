@@ -239,10 +239,13 @@ def solve_identical_disks(length, n):
         jump_two_left = -2
         jump_two_right = 2 
 
+        #lets check for each disk and see if moving it can work.
         for index in range(len(current)):
             pos = current[index]
+            #checking for moving it to the left or right.
             for i in (jump_two_right, jump_two_left, jump_one_right, jump_one_left):
                 cell = pos + i
+                #checking for conditions of the cell.
                 if cell in taken:
                     continue
                 if not (0 <= cell < length):
@@ -252,15 +255,19 @@ def solve_identical_disks(length, n):
                     if middle not in taken:
                         continue
                 
+                #it is a valid move so we can add it to the queue.
                 new_current = list(current)
                 new_current[index] = cell
+                #sort the new current for right order.
                 new_current.sort()
                 new_current = tuple(new_current)
+                #checking for visited cells.
                 if new_current in visited:
                     continue
                 visited.add(new_current)
-
+                #add the new current to the queue.
                 queue.append((new_current, moves + [(pos, cell)]))
+    #return none since we can't find a solution.
     return None
 
 def solve_distinct_disks(length, n):
