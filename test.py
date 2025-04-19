@@ -97,3 +97,12 @@ if __name__ == "__main__":
     k = homework.LightsOutPuzzle(h)
     print("The board looks like = ", k.get_board())
     print("The answer for solver = ", k.find_solution() is None)
+
+    print("disks function test#1")
+    print("answer for the disk (4,2) is:", homework.solve_identical_disks(4,2))
+    print("disks function test#2")
+    print("answer for the disk (5,2) is:", homework.solve_identical_disks(5,2))
+    print("disks function test#3")
+    print("answer for the disk (4,3) is:", homework.solve_identical_disks(4,3))
+    print("disks function test#4")
+    print("answer for the disk (5,6) is:", homework.solve_identical_disks(5,3))

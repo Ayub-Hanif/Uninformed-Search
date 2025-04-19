@@ -215,8 +215,53 @@ def create_puzzle(rows, cols):
 # Section 3: Linear Disk Movement
 ############################################################
 
+# First I think we need to sorted indices of the disks.
 def solve_identical_disks(length, n):
-    pass
+
+    first = tuple(range(n))
+    finished = tuple(range(length-n, length))
+
+    #then I want to make sure we have the BFS 
+    queue = collections.deque()
+    queue.append((first, []))
+    visited = {first}
+
+    while queue:
+        current, moves = queue.popleft()
+        if current == finished:
+            return moves
+        #I made this to check for membership.
+        taken = set(current)
+
+        #name the jumps to make it easier for coding logic
+        jump_one_left = -1
+        jump_one_right = 1
+        jump_two_left = -2
+        jump_two_right = 2 
+
+        for index in range(len(current)):
+            pos = current[index]
+            for i in (jump_two_right, jump_two_left, jump_one_right, jump_one_left):
+                cell = pos + i
+                if cell in taken:
+                    continue
+                if not (0 <= cell < length):
+                    continue
+                if abs(i) == jump_two_right:
+                    middle = (pos + cell) // 2
+                    if middle not in taken:
+                        continue
+                
+                new_current = list(current)
+                new_current[index] = cell
+                new_current.sort()
+                new_current = tuple(new_current)
+                if new_current in visited:
+                    continue
+                visited.add(new_current)
+
+                queue.append((new_current, moves + [(pos, cell)]))
+    return None
 
 def solve_distinct_disks(length, n):
     pass
