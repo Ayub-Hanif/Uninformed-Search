@@ -270,6 +270,61 @@ def solve_identical_disks(length, n):
     #return none since we can't find a solution.
     return None
 
-def solve_distinct_disks(length, n):
-    pass
 
+#for this function I just copied the same code as the last one but with some changes.
+#I noticed we don't need to sort the disk.
+#it is reversed finished tuple.
+def solve_distinct_disks(length, n):
+    first = tuple(range(n))
+    temp_finished = []
+    for i in range(n):
+        cell = length - 1 - i
+        temp_finished.append(cell)
+    finished = tuple(temp_finished)
+
+    #then I want to make sure we have the BFS 
+    queue = collections.deque()
+    queue.append((first, []))
+    visited = {first}
+
+    while queue:
+        current, moves = queue.popleft()
+        if current == finished:
+            return moves
+        #I made this to check for membership.
+        taken = set(current)
+
+        #name the jumps to make it easier for coding logic
+        jump_one_left = -1
+        jump_one_right = 1
+        jump_two_left = -2
+        jump_two_right = 2 
+
+        #lets check for each disk and see if moving it can work.
+        for index in range(len(current)):
+            pos = current[index]
+            #checking for moving it to the left or right.
+            for i in (jump_two_right, jump_two_left, jump_one_right, jump_one_left):
+                cell = pos + i
+                #checking for conditions of the cell.
+                if cell in taken:
+                    continue
+                if not (0 <= cell < length):
+                    continue
+                if abs(i) == jump_two_right:
+                    middle = (pos + cell) // 2
+                    if middle not in taken:
+                        continue
+                
+                #it is a valid move so we can add it to the queue.
+                new_current = list(current)
+                new_current[index] = cell
+                #sort the new current for right order.
+                new_current = tuple(new_current)
+                #checking for visited cells.
+                if new_current not in visited:
+                    visited.add(new_current)
+                    #add the new current to the queue.
+                    queue.append((new_current, moves + [(pos, cell)]))
+    #return none since we can't find a solution.
+    return None
